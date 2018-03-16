@@ -1,4 +1,4 @@
-package com.example.alunos.novoapp;
+package com.example.alunos.random3;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.alunos.novoapp", appContext.getPackageName());
+        assertEquals("com.example.alunos.random3", appContext.getPackageName());
     }
 }

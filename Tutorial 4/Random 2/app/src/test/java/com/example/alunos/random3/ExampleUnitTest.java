@@ -1,4 +1,4 @@
-package com.example.alunos.novoapp;
+package com.example.alunos.random3;
 
 import org.junit.Test;
 

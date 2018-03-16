@@ -1,18 +1,16 @@
-package com.example.alunos.novoapp;
+package com.example.alunos.random3;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Scanner;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends AppCompatActivity {
 
     public int x, y, tentativas;
     TextView numero;
@@ -24,16 +22,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jogar(View args) {
-        tentativas --;
+        tentativas++;
         numero = findViewById(R.id.numero);
         y = Integer.parseInt(numero.getText().toString());
-        if  (x == y) {
-            this.notificacao("Você ganhou!", String.format("O número era: %d. Deseja jogar novamente?", x));
+        if (x!=y) {
+            if (x>y) {
+                Toast.makeText(getApplicationContext(), "Você errou! O número é maior", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Você errou! O número é menor", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(getApplicationContext(),"Você errou, tente novamente!", Toast.LENGTH_SHORT).show();
-        }
-        if (tentativas<0) {
-            this.notificacao("Você perdeu!", String.format("O número era: %d. Deseja jogar novamente?", x));
+            this.notificacao("Você ganhou!", String.format("Você acertou em: %d tentativas. Deseja jogar novamente?", tentativas));
         }
     }
 
@@ -41,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         Random ran = new Random();
         x = ran.nextInt(11);
         numero.setText("");
-        tentativas = 2;
+        tentativas = 0;
     }
 
-    public void notificacao(String title, String msg){
+    public void notificacao(String title, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle(title);
@@ -66,4 +65,3 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 }
-
