@@ -15,14 +15,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void abrirUrl (View v) {
-        EditText url = (EditText) findViewById(R.id.txtUrl);
+    public void abrirUrl(View v){
+        EditText url = findViewById(R.id.txtUrl);
         String aUrl = url.getText().toString();
-        if (aUrl.matches("")) {
+        String http = "http://";
+        if(aUrl.matches("")) {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "Digite um endereço web. . .", Toast.LENGTH_SHORT);
+                    "Digite um endereço web...", Toast.LENGTH_SHORT);
             toast.show();
             return;
+        }else if (!aUrl.contains("http://") || !aUrl.contains("https://")){
+            aUrl = http + aUrl;
         }
         Intent intencao = new Intent(Intent.ACTION_VIEW, Uri.parse(aUrl.toLowerCase()));
         startActivity(intencao);
