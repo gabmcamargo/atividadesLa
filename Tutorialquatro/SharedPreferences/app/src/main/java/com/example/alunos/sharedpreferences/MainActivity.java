@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void carregar(View v) {
         SharedPreferences arquivo = getPreferences(Context.MODE_PRIVATE);
-        String oValor = arquivo.getString("valor", "Nada...");
+        String oValor = arquivo.getString("valor", "");
         valor.setText(oValor);
         Log.i("oValor:", oValor);
     }
